@@ -10,11 +10,11 @@ void verify(float *A, float *B, float *C, unsigned int dim) {
   unsigned int count = 0;
 
   for(int row = 0; row < dim; ++row) {
-    for(int col = 0; col < dim; ++col) {
+    count += C[row*dim];
+	for(int col = 0; col < dim; ++col) {
       float sum = A[row*dim + col] + B[row*dim + col]; 
       float relativeError = (sum - C[row*dim + col])/sum;
-      //printf("%f/%f ", sum, C[row*n + col]);
-      if (relativeError > relativeTolerance
+	  if (relativeError > relativeTolerance
         || relativeError < -relativeTolerance) {
         printf("\nTEST FAILED %u\n\n",count);
         exit(1);

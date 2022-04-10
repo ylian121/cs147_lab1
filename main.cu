@@ -26,8 +26,8 @@ int main (int argc, char *argv[])
         matDim = atoi(argv[1]);
     } else {
         printf("\n    Invalid input parameters!"
-      "\n    Usage: ./sgemm-tiled                # All matrices are 1000 x 1000"
-      "\n    Usage: ./sgemm-tiled <m>            # All matrices are m x m"
+      "\n    Usage: ./mat-add                # All matrices are 1000 x 1000"
+      "\n    Usage: ./mat-add <m>            # All matrices are m x m"
       "\n");
         exit(0);
     }
@@ -69,7 +69,7 @@ int main (int argc, char *argv[])
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
 
-    // Launch kernel using standard sgemm interface ---------------------------
+    // Launch kernel using standard mat-add interface ---------------------------
     printf("Launching kernel..."); fflush(stdout);
     startTime(&timer);
     basicMatAdd(matDim, A_d, B_d, C_d);
