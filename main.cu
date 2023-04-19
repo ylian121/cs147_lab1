@@ -69,7 +69,7 @@ int main (int argc, char *argv[])
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
 
-    // Launch kernel using standard mat-add interface ---------------------------
+    // Launch kernel using standard mat-add interface -------------------------
     printf("Launching kernel..."); fflush(stdout);
     startTime(&timer);
     basicMatAdd(matDim, A_d, B_d, C_d);
@@ -78,7 +78,7 @@ int main (int argc, char *argv[])
     if(cuda_ret != cudaSuccess) printf("Unable to launch kernel");
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
 
-    // Copy device variables from host ----------------------------------------
+    // Copy device variables to host ------------------------------------------
     printf("Copying data from device to host..."); fflush(stdout);
     startTime(&timer);
 
