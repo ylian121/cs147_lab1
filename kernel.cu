@@ -18,7 +18,7 @@ __global__ void matAdd(int dim, const float *A, const float *B, float* C) {
     int idx = threadIdx.x + blockDim.x * blockIdx.x;
     int idy = threadIdx.y + blockDim.y * blockIdx.y;
     int i = (idy*dim + idx);
-    if(i<dim)
+    if(idx <dim && idy<dim)
       C[i] = A[i] + B[i];
         
     /*************************************************************************/
