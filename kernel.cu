@@ -38,9 +38,9 @@ void basicMatAdd(int dim, const float *A, const float *B, float *C)
 
     /*************************************************************************/
     //INSERT CODE HERE
-    dim3 DimGrid(ceil(n/256.0, 1, 1);
-    dim3 DimBlock(256, 1, 1);
-    matAdd<<<DimGrid, DimBlock>>>(A, B, C, dim);
+    dim3 DimGrid((dim-1)/BLOCK_SIZE+1, 1, 1);
+    dim3 DimBlock(BLOCK_SIZE, 1, 1);
+    matAdd<<<DimGrid, DimBlock>>>(dim, A, B, C);
 	
     /*************************************************************************/
 
