@@ -15,9 +15,9 @@ __global__ void matAdd(int dim, const float *A, const float *B, float* C) {
 
     /*************************************************************************/
     // INSERT KERNEL CODE HERE
-    int idx.x = threadIdx.x + blockDim.x * blockIdx.x;
-    int idx.y = threadIdx.y + blockDim.y * blockIdx.y;
-    int i = (idx.y*dim + x);
+    int idx = threadIdx.x + blockDim.x * blockIdx.x;
+    int idy = threadIdx.y + blockDim.y * blockIdx.y;
+    int i = (idy*dim + idx);
     if(i<dim)
       C[i] = A[i] + B[i];
         
