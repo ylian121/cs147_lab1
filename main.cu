@@ -53,6 +53,9 @@ int main (int argc, char *argv[])
 
     /*************************************************************************/
     //INSERT CODE HERE
+    cudaMalloc((void **) &A_d, size);
+    cudaMalloc((void **) &B_d, size);
+    cudaMalloc((void **) &C_d, size);
 
     /*************************************************************************/
     cudaDeviceSynchronize();
@@ -64,7 +67,8 @@ int main (int argc, char *argv[])
 	
     /*************************************************************************/
     //INSERT CODE HERE
-
+    cudaMemcpy(A_d, A, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(B_d, B, size, cudaMemcpyHostToDevice);
     /*************************************************************************/
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
@@ -84,6 +88,7 @@ int main (int argc, char *argv[])
 
     /*************************************************************************/
     //INSERT CODE HERE
+    cudaMemcpy(C_d, C, size, cudaMemcpyHostToDevice);
 
     /*************************************************************************/
     cudaDeviceSynchronize();
@@ -104,6 +109,9 @@ int main (int argc, char *argv[])
 
     /*************************************************************************/
     //INSERT CODE HERE
+    cudaFree(A_d);
+    cudaFree(B_d);
+    cudaFree(C_d);
     
     /*************************************************************************/
     return 0;

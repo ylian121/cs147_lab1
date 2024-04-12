@@ -15,6 +15,9 @@ __global__ void matAdd(int dim, const float *A, const float *B, float* C) {
 
     /*************************************************************************/
     // INSERT KERNEL CODE HERE
+    int i = threadIdx.x + blockDim.x * blockIdx.x;
+    if(i<dim)
+      C[i] = A[i] + B[i];
         
     /*************************************************************************/
 
@@ -35,6 +38,9 @@ void basicMatAdd(int dim, const float *A, const float *B, float *C)
 
     /*************************************************************************/
     //INSERT CODE HERE
+    dim3 DimGrid(ceil(n/256.0, 1, 1);
+    dim3 DimBlock(256, 1, 1);
+    matAdd<<<DimGrid, DimBlock>>>(A, B, C, dim);
 	
     /*************************************************************************/
 
